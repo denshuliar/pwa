@@ -1,17 +1,18 @@
-import { Workbox } from "workbox-window";
+import { Workbox } from 'workbox-window'
 
-let wb;
+// eslint-disable-next-line import/no-mutable-exports
+let wb = null
 
-if ("serviceWorker" in navigator) {
-  wb = new Workbox(`${process.env.BASE_URL}service-worker.js`);
+if ('serviceWorker' in navigator) {
+	wb = new Workbox(`${process.env.BASE_URL}service-worker.js`)
 
-  wb.addEventListener("controlling", () => {
-    window.location.reload();
-  });
+	wb.addEventListener('controlling', () => {
+		window.location.reload()
+	})
 
-  wb.register();
+	wb.register()
 } else {
-  wb = null;
+	wb = null
 }
 
-export default wb;
+export default wb
